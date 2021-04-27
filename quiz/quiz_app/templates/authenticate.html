@@ -1,0 +1,35 @@
+{% extends 'header.html' %}
+{%block content%}
+
+
+
+<center>
+ <h4 style="background:#004249;color:white;margin-top:39px" class=" jumbotron ">{{login_or_register}} </h4>
+</center>
+
+  <div class="authenticate" style="margin-top:19px;;background:white;padding:10px;opacity:0.9;">
+    <form action="/{{action}}" method="post"> {% csrf_token %}
+
+     <label>Username</label></br>
+     <input type="text" class="form-control" name="username" required/></br>
+
+    <label>Password</label></br>
+    <input type="password" class="form-control"  name="password" required/></br>
+   
+   {% if action == 'register' %}
+   <label>Confirm password</label></br>
+    <input type="password" class="form-control"  name="retyped_password" required/></br>
+   {%endif%}
+
+   <input type="submit" class="btn btn-info" value="{{login_or_register}}" />
+   <span class="text text-danger">{{error}}</span>
+
+   {% if link_to_signup %}
+   <label>Not a member ?  <a class="text text-info text-sm" class="text-decoration:none" href="/register">Signup now</a></label>
+   {% endif %}
+ </form>
+</div>
+
+
+
+{% endblock%}

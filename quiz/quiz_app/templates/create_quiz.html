@@ -1,0 +1,54 @@
+  {% extends 'header.html' %}
+  {%block content%}
+
+<div style="background:white;padding:10px;opacity:0.9;margin-top:20px;height:90%">
+   <div class="row">
+     <div style="margin-right:15%">
+
+      {% if request.user.is_authenticated%}
+
+           <span style="margin:15px;font-size:15px;" class=" text text-info badge badge-dark">{{user}}</span>
+
+           <a style="text-decoration:none;margin:10px;color:#88B2BA" class="text "href="/logout">Logout</a>
+      {% else %}
+          <a style=";text-decoration:none;margin:10px;color:#88B2BA" class="float-left "href="/login">Login</a>
+
+          <a style=";text-decoration:none;margin:10px;color:#88B2BA" class="float-left " href="/register">Register</a>
+
+      {% endif %}
+
+    </div>
+   </div>
+
+   </br></br>
+
+
+    <div class="row">
+      <p class="text  " style=";color:grey;font-family:arial;margin-left:4%" >
+           “Education is the most
+           powerful weapon </br>
+           which you can use to
+           change the world”
+           <span style="margin:20px">  </span>– Nelson Mandela.
+     </p>
+    </div></br></br>
+
+
+
+     <div class="row" style="margin:13px;padding-top:20px">
+       <form  method="post" action="/create_question" method="post" style="margin-left:4%">{% csrf_token %}
+          <input type="text"  class="form-control" placeholder="Create a quiz" name="quiz_name" style=";;background:none;border:1px solid black;"  required/>
+           <span class="text text-info">{{error}}</span>
+          <input class=" btn btn2 "  style="margin-top:3px;color:white;width:100%;height:50px;font-size:20px;"type="submit" value="Create Quiz"></br>
+          <a style=";margin-top:20px;text-decoration:none;width:100%;height:50px;font-size:20px;color:white;;" class="btn btn2 " href="/quizes">Start Quiz</a>
+     </form>
+    </div>
+
+
+
+</div>
+
+
+
+
+ {% endblock%}

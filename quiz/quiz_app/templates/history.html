@@ -1,0 +1,42 @@
+ {% extends 'header.html' %}
+  {%block content%}
+
+
+ <div class="container" style="height:100%;background:white;opacity:0.9" >
+    </br>
+    <h5  style="background:#55979C;color:white" class=" jumbotron ">Quiz History</h5>
+    </br>
+    <hr class="bg-info"></hr>
+   <table class="table table-info" style="margin:0px ; color:black">
+     {% if quiz_data %}
+      <tr>
+          <td class="text text-info">Quiz name</td>
+          <td class="text text-info">Score</td>
+      </tr>
+      <tr>
+            <td>{{quiz_data.quiz_name}}</td>
+            <td>{{quiz_data.score}}</td>
+      </tr>
+        <tr>
+          <td class="text text-info">Question</td>
+          <td class="text text-info">Right answers</td>
+          <td class="text text-info">Your answers</td>
+        </tr>
+        {% for question in quiz_data.questions%}
+        <tr>
+          <td>{{question.question}}</td>
+          <td>{{question.right_options}}</td>
+          <td>{{question.user_selected_options}}</td>
+        </tr>
+      {% endfor %}
+    {% else %}
+        <tr>
+          <td class="text text-info"> Quiz not played yet </td>
+      </tr>
+   {% endif%}
+ </table>
+ </div>
+
+
+
+ {% endblock%}

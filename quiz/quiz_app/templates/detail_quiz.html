@@ -1,0 +1,73 @@
+ {% extends 'header.html' %}
+  {%block content%}
+
+
+
+       <div id="msgbox" style="display:none"  class="jumbotron"> <span class="font-right btn btn-danger" onclick="show_msg.call(this)">
+             X
+           </span><center>
+          <h  id = "message" style="margin-top:20px;margin-left:20px;font-size:13px;color:grey" class="text ">
+
+          </h>
+
+       </center>
+   </div>
+
+       <center>
+          <div  style=" background:#004249;color:white" class="jumbotron">
+            <h2 class="" id="quiz-name"   style=";font-size:15px;float:left;;padding:10px">
+              {{ quiz.quiz_name }}
+            </h2>
+            
+          {% if has_played == False %}
+          <h5 id="counter"  style=";color:grey;font-size:15px;float:left;;padding:10px">  0 min : 0 sec </h5>
+
+
+          <form id="finish" class="btn3 btn float-right" onclick="finish.call(this)"  >
+            <span>finish test</span>
+            {% csrf_token%}
+         </form>
+         {% endif%}
+
+         </div>
+       </center>
+
+      <hr></br>
+
+            {%for question in quiz.questions %}</br>
+
+              <form id="{{ question.question_id}}" style="height:80%;background:white;padding:30px;opacity:0.9;margin-left:20px" onsubmit="freez.call(this); return false;" >{% csrf_token %}
+                <h>  [{{question.question_number}}] {{ question.question }} </h>
+
+                   </br></br>
+
+                    {%for option in question.options %}
+
+                        {%  if question.multiple_right_answers %}
+                           <label>{{option.tag}}.  </label>
+                           <input type="checkbox" value="{{ option.id }}" >
+                           <span style="margin:20px">  {{ option.option }}</span>
+                           </input></br>
+
+                        {% else %}
+                           <label>{{option.tag}}.  </label>
+                           <input type="radio" value="{{ option.id }}" name='{{question.question}}+options'>
+                           <span style="margin:20px">  {{ option.option }}</span>
+                           </input></br>
+                        {% endif %}
+
+                    {%endfor%}</br>
+
+
+                    <input type="submit" value="submit"  id="button{{question.question_id}}" style=";color:white" class="btn btn3 btn-sm" />
+                    <p class="result{{question.question_id}}"></p>
+                    <p id="solution{{question.question_id}}"></p>
+            </form>
+
+
+      {%endfor%}{{ quiz.error}}
+
+
+
+
+ {% endblock%}

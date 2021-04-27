@@ -1,0 +1,44 @@
+ {% extends 'header.html' %}
+  {%block content%}
+
+
+ <div class="container" style="height:100%;background:white;opacity:0.9" >
+    </br>
+    <h5  style="background:#55979C;color:white" class=" jumbotron ">All Quizes Available</h5>
+    </br>
+    <hr class="bg-info">
+    <table class="table " style="background:#55979C;color:white">
+    {% for quiz in quiz_list%}
+    <form>
+    
+       <tr>
+        <td>
+          <a 
+              class ="text " 
+              style="color:white;text-decoration:none;font-size:15px " 
+              href="{{ quiz.get_absolute_url }}" 
+           >
+                {{quiz}}
+          </a>
+        </td>
+        <td>
+           <a 
+              class ="text  " 
+              style="color:white;text-decoration:none;font-size:15px " 
+              href="history/{{quiz}}" 
+            >
+                  Check history
+         </a>
+       </td>
+      </tr>
+   </form>
+  {% endfor%} 
+ </table>
+ 
+ </div>
+
+
+
+ {% endblock%}
+
+

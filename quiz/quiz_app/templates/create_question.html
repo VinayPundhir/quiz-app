@@ -1,0 +1,79 @@
+ {% extends 'header.html' %}
+  {%block content%}
+
+ 
+   <form class="form" style="background:white;padding:10px;opacity:0.9" method="post" action="/save_question" method="post">
+    {% csrf_token %}
+       <center>
+          <h4 style="background:#004249;color:white" class=" jumbotron ">Add question for 
+             <span class="  " style="">{{quiz_name}}<span>
+          </h4>
+      </center>
+      <hr>
+      <input id="quiz_name"type="hidden" value="{{ quiz_name }}" name="quiz_name"/> </br>
+      <h4>Question</h4>
+
+  
+     <input type="text" class="form-control" name="question"   required style=";;width:100%;height:30%"/></br>
+     <p class = "text" style="margin-left:53%"> use check box for valid option</p>
+ 
+
+
+
+  <div class="row">
+    <div class="col-md-6 " >
+      <label>option 1.</label><input type="text" class="form-control" style="; ;width:100%"  name="option_a"  required />
+    </div>
+    <div class="col-md-6 " >
+      <input type="checkbox"  name="option_a_valid"  value="False"   style="width:10%"/></br>
+    </div>
+  </div>
+  
+
+
+
+  <div class="row">
+    <div class="col-md-6 " >
+      <label>option 2.</label><input type="text" class="form-control"  name="option_b"  required style=";;width:100%"/>
+    </div>
+    <div class="col-md-6 " >
+      <input type="checkbox"  name="option_b_valid" value="False"   style="width:10%"/></br>
+    </div>
+  </div>
+
+
+
+
+  <div class="row">
+    <div class="col-md-6 " >
+     <label>option 3.</label><input type="text" class="form-control"   name="option_c"  required style=";;width:100%"/>
+    </div>
+    <div class="col-md-6 " >
+     <input type="checkbox"  name="option_c_valid" value="False"   style="width:10%"/></br>
+    </div>
+  </div>
+
+
+
+
+  <div class="row">
+    <div class="col-md-6 " >
+      <label>option 4.</label><input type="text" class="form-control"   name="option_d"  required style=";;width:100%"/>
+  </div>
+    <div class="col-md-6 " >
+      <input type="checkbox" name="option_d_valid"  value="False"   style="width:10%"/>
+    </div>
+  </div>
+
+
+
+
+  </br></br>
+  <p class="text text-{{color}}">{{ errors }}<p>
+  <input class="btn btn2" style="color:white"type="submit" value="Save"></br></br>
+  </form>
+
+ 
+
+
+ {% endblock%}
