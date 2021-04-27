@@ -26,7 +26,6 @@ SECRET_KEY = 'yiej%(zs-q!pb5kxe7ia^45f#zekpxso^8ni=k1r#i(=xmvi%8'
 DEBUG = False
 
 ALLOWED_HOSTS = ['myquiz.pythonanywhere.com','127.0.0.1']
-ALLOWED_ALL_HOSTS = True
 
 # Application definition
 
