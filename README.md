@@ -1,3 +1,3 @@
 # quiz-app
 
-Live  @ https://myquiz.pythonanywhere.com
+Live  @ https://noob.pythonanywhere.com/
